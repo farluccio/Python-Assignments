@@ -79,7 +79,7 @@ def even_odd(winningNumber):
 def finish_game(holeNumber, totalStrokes):
     print '\nSCOREBOARD'
     averageStroke = 0.0     # assigning a float variable
-    print type(averageStroke)
+    # print type(averageStroke) # ensuring variable is a float
     for i in range(1, holeNumber + 1):      # for loop to cycle through string of hole values
         print 'Hole {}: {}'.format(i, totalStrokes[i - 1])
         averageStroke = averageStroke + int(totalStrokes[i-1])
