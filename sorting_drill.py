@@ -29,5 +29,5 @@ def my_sort(sortMe):
         while flag:     # this adds the getNum if the above if statement doesn't fire
             sortedList.append(getNum)
             flag = False
-            
+    
     print sortedList
