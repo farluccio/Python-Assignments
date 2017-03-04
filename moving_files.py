@@ -9,15 +9,20 @@ import os
 
 
 files = os.listdir('C:\Users\Student\Desktop\origination files')
-#print files
+print 'Files to be moved: ', files
+print
+
 originationPath = 'C:\Users\Student\Desktop\origination files\\'
-print originationPath
+#print originationPath
 destinationFolder = 'C:\Users\Student\Desktop\destination files'
-print destinationFolder
+#print destinationFolder
 
 ##shutil.move('C:\Users\Student\Desktop\origination files\\first.txt',
 ##           'C:\Users\Student\Desktop\destination files')
 
 for item in files:
     shutil.move(originationPath + item, destinationFolder)
-    print item, 'moved from', originationPath, 'moved to', destinationFolder
+    print 'moved', item, 'from', originationPath, 'to', destinationFolder
+    print
+
+##End Code##
