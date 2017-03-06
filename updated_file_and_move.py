@@ -1,43 +1,40 @@
-##Holding folder for local computer
-##Scan for holding folder baseline
-##Scan holding folder for new and updated files
-##Move new and updated files to "company's" (destination) folder
-##(I have a script for moving files from folder to folder)
-
-
-##cycle through files to determine if a new one is present and add
-##to the list.  Compare the other dates.
+##Created by Eric Farley, Python 2.7.13
+##
+##Script created for Tech Academy drill to move files from one folder
+##to another if they've been edited or created in the last 24 hours.
 
 
 import shutil
 import os
 import datetime
 
-## defining file paths, to and from folders
+## defining file paths, to and from folders (future: have user define both of these)
 originationFilePath = 'C:\Users\Student\Desktop\origination files'
 destinationFilePath = 'C:\Users\Student\Desktop\destination files'
 
-## outlining list of files in holding folder
-fileList = os.listdir(originationFilePath)
-#print fileList
+## defining a reocurring transfer time
+##lastTransfertime = datetime.datetime.today().replace(hour=23, minute=00) - datetime.timedelta(1)
+##print 'Last time files were moved:', lastTransfertime.strftime('%m-%d-%y %H:%M')
+##print
 
-## defining the last transfer time to compare with file modification date
-lastTransfertime = datetime.datetime.today().replace(hour=23, minute=00) - datetime.timedelta(1)
-print 'Last time files were moved:', lastTransfertime.strftime('%m-%d-%y %H:%M')
-print
-
-## for loop to determine if a file should be transferred
+## for loop to determine if a file should be transferred (future update: pass in file paths)
 def updated_file():
+    ## outlining list of files in holding folder
+    fileList = os.listdir(originationFilePath)
+    #print fileList
+
     for item in fileList:
         
         fileListDate = os.path.getmtime(originationFilePath + '\\' + item)
         modDate = datetime.datetime.fromtimestamp(fileListDate)
         fileToMove = originationFilePath + '\\' + item
-            
-        if modDate > lastTransfertime:
+                    
+        if (datetime.datetime.now() - modDate) < datetime.timedelta(hours=24):
             shutil.move(fileToMove, destinationFilePath)
             print 'Moved: ', item, '\nfrom', originationFilePath, '\nto', destinationFilePath
             print
 
 if __name__ == "__main__":
     updated_file()
+
+##End Script##
