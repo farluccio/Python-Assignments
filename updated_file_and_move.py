@@ -9,8 +9,8 @@ import os
 import datetime
 
 ## defining file paths, to and from folders (future: have user define both of these)
-originationFilePath = 'C:\Users\Student\Desktop\origination files'
-destinationFilePath = 'C:\Users\Student\Desktop\destination files'
+#originationFilePath = 'C:\Users\Student\Desktop\origination files'
+#destinationFilePath = 'C:\Users\Student\Desktop\destination files'
 
 ## defining a reocurring transfer time
 ##lastTransfertime = datetime.datetime.today().replace(hour=23, minute=00) - datetime.timedelta(1)
@@ -18,7 +18,7 @@ destinationFilePath = 'C:\Users\Student\Desktop\destination files'
 ##print
 
 ## for loop to determine if a file should be transferred (future update: pass in file paths)
-def updated_file():
+def updated_file(originationFilePath, destinationFilePath):
     ## outlining list of files in holding folder
     fileList = os.listdir(originationFilePath)
     #print fileList
