@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
-from tkinter import filedialog
+from tkinter import filedialog #Used for browse function
+import updated_file_and_move #script file to move files 
 
 root = Tk()
 
@@ -41,10 +42,14 @@ def browse_receive_function(event):
     text_receive.insert(END, browse_selection)
 
 def check_entries(event):
-    if text_send and text_receive:
-        run script '''import script module above'''
+    if not text_send.get() or not text_receive.get():
+        showerror("Error", "Please select filepaths using the browse buttons.")
+
     else:
-        popup please select filepaths using the browse buttons
+        send_filepath = text_send.get("1.0",'end-1c')
+        receive_filepath = text_receive.get("1.0",'end-1c')
+        updated_file_and_move.updated_file(send_filepath, receive_filepath)
+        showinfo("Succes", "Files have been transferred")
 
 def cancel_script(event):
     root.destroy function
