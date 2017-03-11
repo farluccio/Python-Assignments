@@ -9,19 +9,16 @@ import os
 import datetime
 
 ## defining file paths, to and from folders (future: have user define both of these)
-#originationFilePath = 'C:\Users\Student\Desktop\origination files'
-#destinationFilePath = 'C:\Users\Student\Desktop\destination files'
+#originationFilePath = 'C:/Users/Farley/Desktop/discard_send'
+#destinationFilePath = 'C:/Users/Farley/Desktop/discard_receive'
 
-## defining a reocurring transfer time
-##lastTransfertime = datetime.datetime.today().replace(hour=23, minute=00) - datetime.timedelta(1)
-##print 'Last time files were moved:', lastTransfertime.strftime('%m-%d-%y %H:%M')
-##print
 
 ## for loop to determine if a file should be transferred (future update: pass in file paths)
 def updated_file(originationFilePath, destinationFilePath):
     ## outlining list of files in holding folder
     fileList = os.listdir(originationFilePath)
     #print fileList
+    moved_summary = []
 
     for item in fileList:
         
@@ -31,10 +28,15 @@ def updated_file(originationFilePath, destinationFilePath):
                     
         if (datetime.datetime.now() - modDate) < datetime.timedelta(hours=24):
             shutil.move(fileToMove, destinationFilePath)
-            print 'Moved: ', item, '\nfrom', originationFilePath, '\nto', destinationFilePath
-            print
+            string_summary = [item]
+            #print(string_summary)
+            #print()
+            moved_summary = moved_summary + string_summary
+
+    return moved_summary
+
 
 if __name__ == "__main__":
-    updated_file()
+    pass
 
 ##End Script##
