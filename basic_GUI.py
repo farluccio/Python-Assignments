@@ -63,4 +63,6 @@ label_receive.grid(row=0, column=2, pady=10)
 
 if __name__ == "__main__":
     root.mainloop()
+
     
+##End Code##
