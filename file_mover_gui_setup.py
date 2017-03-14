@@ -18,6 +18,7 @@ def load_gui(self):
 
     self.label_send = ttk.Label(self.master, text = "Select folder to send")
     self.label_receive = ttk.Label(self.master, text = "Select destination folder")
+    self.label_last_run_date = ttk.Label(self.master, text = "NOTE: This script was last run " + file_mover_functions.get_date(self))
 
     ### widget placement ###
     # buttons
@@ -33,6 +34,7 @@ def load_gui(self):
     # labels
     self.label_send.grid(row=0, column=0, pady=10)
     self.label_receive.grid(row=0, column=2, pady=10)
+    self.label_last_run_date.grid(row=4, column=0, columnspan=2)
 
     # database
     file_mover_functions.create_db(self)
