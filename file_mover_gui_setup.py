@@ -7,6 +7,9 @@ import file_mover_functions
 
 def load_gui(self):
     
+    # database
+    file_mover_functions.create_db(self)
+
     ### define widgets ###
     self.button_browse_send = ttk.Button(self.master, text = "Browse", command =lambda:browse_send_function(self))
     self.button_browse_receive = ttk.Button(self.master, text = "Browse", command = lambda:browse_receive_function(self))
@@ -36,8 +39,6 @@ def load_gui(self):
     self.label_receive.grid(row=0, column=2, pady=10)
     self.label_last_run_date.grid(row=4, column=0, columnspan=2)
 
-    # database
-    file_mover_functions.create_db(self)
 
 ### functions directly related to buttons on GUI ###
 
